@@ -1,0 +1,66 @@
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+  margin: auto;
+  width: 80%;
+}
+
+.header{
+  display: flex;
+  margin-top: 30px;
+
+
+}
+
+i{
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+
+h1{
+  font-size: 5em;
+}
+
+h2{
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+
+
+}
+
+p{
+  text-align: center;
+  padding: 20px;
+}
+
+.buton-container{
+  text-align: center;
+  position: relative;
+}
+.pad{
+  margin: 15px;
+}
+.footer{
+ text-align: center;
+}
+
+.footer img {
+  width: 80%;
+  margin-top: 50px;
+}
+
+.btn:hover {
+  background-color: #002B7F;
+}
+
+
+@media screen and (max-width: 600px) {
+  h2 {
+    padding:0;
+    font-size: 1.5rem;
+  }
+}
