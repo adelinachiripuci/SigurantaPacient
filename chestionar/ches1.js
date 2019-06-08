@@ -1,3 +1,39 @@
+var config = {};
+
+function ajax(method, url, body, callback, rejectCallback) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        if (typeof callback === "function") {
+          callback(JSON.parse(this.responseText));
+        }
+      } else {
+        if (typeof rejectCallback === "function") {
+          rejectCallback(new Error("serverul a dat eroare"));
+        }
+      }
+    }
+  };
+  xhttp.open(method, url, true);
+  xhttp.send(body);
+};
+
+function getQuestions() {
+
+  ajax("GET", "https://ca2019-backend.herokuapp.com/api/form/1", undefined, function(answer) {
+    config = answer;
+    var sum = 0;
+    for (var i in cart) {
+      if (cart[i] === null) {
+        continue
+      };
+      sum += Number(cart[i].quantity);
+    }
+    document.querySelector("#nr-of-prod-in-cart").innerHTML = "(" + sum + ")";
+  })
+}
+
 function draw(config) {
   var str = '';
   for (var i = 0; i < config.length; i++) {
@@ -41,10 +77,14 @@ function draw(config) {
         </fieldset>`
     } else if ( config[i].type === "text") {
       str += `  <input type="text" name="" value="">`
+    } else if(config[i].type === "number") {
+      str += `  <input type="number" name="" value="">`
     }
   }
   return str;
 }
+
+
 
 document.querySelector("#form").innerHTML = (draw([{
     "label": "Cine sunteti?",

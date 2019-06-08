@@ -2,3 +2,11 @@ form, h1 {
 margin: 0 auto;
 margin-top:100px;
 }
+.submit {
+margin: 0 auto;
+position: relative;
+}
+.submit input {
+  margin-bottom: 40px;
+
+}
